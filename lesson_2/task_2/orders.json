@@ -1,0 +1,11 @@
+{
+    "orders": [
+        {
+            "item": "Apple MacBook Pro 13",
+            "quantity": 1,
+            "price": 161490.0,
+            "buyer": "Карасев Вадим",
+            "date": "23-10-2021"
+        }
+    ]
+}
