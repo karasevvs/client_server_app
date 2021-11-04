@@ -1,0 +1,28 @@
+2021-11-03 19:03:09,428 INFO     client.py  Сообщение отправлено presence от пользователя Vadim для сервера 127.0.0.1
+2021-11-03 19:23:03,474 INFO client.py Сообщение отправлено presence от пользователя Vadim для сервера 127.0.0.1
+2021-11-03 19:24:10,979 CRITICAL client_logs_config.py Критическая ошибка
+2021-11-03 19:24:10,979 ERROR client_logs_config.py Ошибка
+2021-11-03 19:24:10,979 DEBUG client_logs_config.py Отладочная информация
+2021-11-03 19:24:10,979 INFO client_logs_config.py Информационное сообщение
+2021-11-03 19:24:10,979 WARNING client_logs_config.py Внимание
+2021-11-03 19:29:39,655 CRITICAL client_logs_config.py Критическая ошибка
+2021-11-03 19:29:39,655 ERROR client_logs_config.py Ошибка
+2021-11-03 19:29:39,655 DEBUG client_logs_config.py Отладочная информация
+2021-11-03 19:29:39,655 INFO  client_logs_config.py Информационное сообщение
+2021-11-03 19:29:39,655 WARNING client_logs_config.py Внимание
+2021-11-03 19:29:47,819 CRITICAL   client_logs_config.py Критическая ошибка
+2021-11-03 19:29:47,819 ERROR      client_logs_config.py Ошибка
+2021-11-03 19:29:47,819 DEBUG      client_logs_config.py Отладочная информация
+2021-11-03 19:29:47,819 INFO       client_logs_config.py Информационное сообщение
+2021-11-03 19:29:47,819 WARNING    client_logs_config.py Внимание
+2021-11-03 19:29:54,257 CRITICAL   client_logs_config.py Критическая ошибка
+2021-11-03 19:29:54,257 ERROR      client_logs_config.py Ошибка
+2021-11-03 19:29:54,257 DEBUG      client_logs_config.py Отладочная информация
+2021-11-03 19:29:54,257 INFO       client_logs_config.py Информационное сообщение
+2021-11-03 19:29:54,257 WARNING    client_logs_config.py Внимание
+2021-11-03 19:30:01,443 CRITICAL   client_logs_config.py Критическая ошибка
+2021-11-03 19:30:01,443 ERROR      client_logs_config.py Ошибка
+2021-11-03 19:30:01,443 DEBUG      client_logs_config.py Отладочная информация
+2021-11-03 19:30:01,443 INFO       client_logs_config.py Информационное сообщение
+2021-11-03 19:30:01,443 WARNING    client_logs_config.py Внимание
+2021-11-03 19:30:22,714 INFO       client.py  Сообщение отправлено presence от пользователя Vadim для сервера 127.0.0.1
