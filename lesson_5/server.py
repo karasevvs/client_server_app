@@ -8,7 +8,7 @@ from lesson_5.common.variables import ACTION, ACCOUNT_NAME, RESPONSE, MAX_CONNEC
 from lesson_5.common.utils import get_message, send_message
 import argparse
 import logging
-import lesson_5.logs.server_logs_config
+import lesson_5.errors_user as errors_user
 
 LOG_MAIN = logging.getLogger('server')
 
@@ -46,11 +46,9 @@ def server_main():
     try:
         listen_port = args.p
         if not (1024 < listen_port < 65535):
-            raise ValueError
-    except ValueError:
-        print(
-            'В качастве порта может быть указано только число в диапазоне от 1024 до 65535.')
-        LOG_MAIN.critical(f'Ошибка порта {args.listen_port}: {args.error}. Соединение закрывается.')
+            raise errors_user.PortError
+    except errors_user.PortError as port_error:
+        LOG_MAIN.critical(f'Ошибка порта {args.listen_port}: {port_error}. Соединение закрывается.')
         sys.exit(1)
 
     # Загружаем адрес для прослушки
@@ -78,10 +76,11 @@ def server_main():
             send_message(client, response)
             LOG_MAIN.info(f'Отправлено сообщение {response} клиенту {client_address}')
             client.close()
-        except (ValueError, json.JSONDecodeError):
-            print('Принято некорретное сообщение от клиента.')
+        except json.JSONDecodeError:
             LOG_MAIN.error(f'Не удалось декодировать сообщение клиента {client_address}.')
             client.close()
+        except errors_user.IncorrectDataRecivedError:
+            LOG_MAIN.error(f'Принято некорректное сообщение от удалённого компьютера. {client_address}')
 
 
 if __name__ == '__main__':

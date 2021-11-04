@@ -8,7 +8,7 @@ from lesson_5.common.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME
     RESPONSE, ERROR, DEFAULT_IP_ADDRESS, DEFAULT_PORT, PORT
 from lesson_5.common.utils import get_message, send_message
 import argparse
-import lesson_5.logs.client_logs_config
+import lesson_5.errors_user as errors_user
 import logging
 
 LOG_MAIN = logging.getLogger('client')
@@ -60,10 +60,9 @@ def client_main():
         server_port = args_parse.port
         server_address = args_parse.address
         if not (1024 < server_port < 65535):
-            raise ValueError
-    except ValueError:
-        print('В качестве порта может быть указано только число в диапазоне от 1024 до 65535.')
-        LOG_MAIN.critical(f'Ошибка порта {args_parse.server_port}: {args_parse.error}')
+            raise errors_user.PortError
+    except errors_user.PortError as port_error:
+        LOG_MAIN.critical(f'Ошибка порта {args_parse.server_port}: {port_error}')
         sys.exit(1)
 
     # Инициализация сокета и обмен
@@ -78,8 +77,11 @@ def client_main():
     try:
         answer = server_process_answer(get_message(trans_port))
         print(f"Ответ => {answer}")
-    except (ValueError, json.JSONDecodeError):
-        print('Не удалось декодировать сообщение сервера.')
+    except json.JSONDecodeError:
+        LOG_MAIN.error(f'Не удалось декодировать сообщение сервера: {server_address}')
+    except errors_user.IncorrectDataRecivedError as incorrect_data:
+        LOG_MAIN.error(f'Принято некорректное сообщение от удалённого компьютера. {server_address}: {incorrect_data}')
+
 
 
 if __name__ == '__main__':
